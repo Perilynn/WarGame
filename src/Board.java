@@ -17,6 +17,15 @@ public class Board {
         blueScore = 0;
         greenScore = 0;
     }
+    public Board(Board board1) {
+        for(int i = 0; i < 6; i++) {
+            for(int j = 0; j < 6; j++) {
+                board[i][j] = board1.board[i][j];
+            }
+        }
+        blueScore = board1.blueScore;
+        greenScore = board1.greenScore;
+    }
 
     public boolean takeOver(int x, int y, String newColor) {
         if ((x < 0 || x > 5) || (y < 0 || y > 5) || (board[x][y].color != "n")) return false;
