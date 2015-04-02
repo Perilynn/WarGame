@@ -16,9 +16,9 @@ public class AlphaBeta {
                     copy.takeOver(i, j, Color);
                     AlphaBetaObject temp;
                     if (Color == "blue") {
-                        temp = new AlphaBetaObject(AlphaBetaHelper(board, depth - 1, "green", i, j, alpha, beta, false, count), i, j);
+                        temp = new AlphaBetaObject(AlphaBetaHelper(copy, depth - 1, "green", i, j, alpha, beta, false, count), i, j);
                     } else {
-                        temp = new AlphaBetaObject(AlphaBetaHelper(board, depth - 1, "blue", i, j, alpha, beta, false, count), i, j);
+                        temp = new AlphaBetaObject(AlphaBetaHelper(copy, depth - 1, "blue", i, j, alpha, beta, false, count), i, j);
                     }
                     alpha = Math.max(alpha, temp.temp);
                     min.add(temp);
@@ -59,20 +59,20 @@ public class AlphaBeta {
                     int temp;
                     if(!mm) {
                         if(Color == "blue") {
-                            temp = AlphaBetaHelper(board, depth - 1, "green", i, j, alpha, beta, true, count);
+                            temp = AlphaBetaHelper(copy, depth - 1, "green", i, j, alpha, beta, true, count);
                         }
                         else {
-                            temp = AlphaBetaHelper(board, depth - 1, "blue", i, j, alpha, beta, true, count);
+                            temp = AlphaBetaHelper(copy, depth - 1, "blue", i, j, alpha, beta, true, count);
                         }
                         beta = Math.min(beta, temp);
                         if (beta <= alpha) return beta;
                     }
                     else {
                         if(Color == "blue") {
-                            temp = AlphaBetaHelper(board, depth - 1, "green", i, j, alpha, beta, false, count);
+                            temp = AlphaBetaHelper(copy, depth - 1, "green", i, j, alpha, beta, false, count);
                         }
                         else {
-                            temp = AlphaBetaHelper(board, depth - 1, "blue", i, j, alpha, beta, false, count);
+                            temp = AlphaBetaHelper(copy, depth - 1, "blue", i, j, alpha, beta, false, count);
                         }
                         alpha = Math.max(alpha, temp);
                         if(beta <= alpha) return alpha;
